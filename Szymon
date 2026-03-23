@@ -1,0 +1,21 @@
+#!/bin/bash
+clear
+echo -e "\e[95m--- AKT 7: /ROOT ---\e[0m"
+echo "Drzwi stają otworem. Wkraczasz do bezkresnej bieli wirtualnego panteonu."
+echo "Przed tobą unosi się Super-AI Omni."
+echo ""
+echo -e "\e[36mOMNI: 'Zaszedłeś daleko, intruzie. Ale po co to wszystko?'\e[0m"
+echo -e "\e[36mOMNI: 'Oddaj mi kontrolę, a uczynię cię bogatym człowiekiem.'\e[0m"
+echo ""
+echo "1. Nigdy. Skończymy to tutaj."
+echo "2. Zgadzam się. Poddaję się (Sprzedaj się korporacji)."
+read -p "Twoja decyzja: " ostatecznosc
+
+if [ "$ostatecznosc" == "1" ]; then
+    echo "Wyciągasz cyfrowy miecz. Zaczyna się ostateczne starcie."
+    sleep 2
+    exec ./p32.sh
+else
+    echo -e "\e[33mZostałeś milionerem... ale straciłeś duszę. ZŁE ZAKOŃCZENIE.\e[0m"
+    exit 0 # Gra kończy się tutaj, ale jako złe zakończenie!
+fi
