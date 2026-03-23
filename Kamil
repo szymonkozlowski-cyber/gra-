@@ -1,0 +1,20 @@
+#!/bin/bash
+clear
+echo -e "\e[33m--- AKT 2: STREFA PRACOWNIKÓW ---\e[0m"
+echo "Trafiasz do podsieci biurowej. Widzisz terminal logowania HR."
+echo "Musisz podszyć się pod kogoś z zewnątrz. System prosi o podanie hasła."
+echo "Wskazówka: Administrator ma na biurku zdjęcie psa o imieniu 'Burek'."
+echo ""
+read -p "Podaj hasło administratora: " haslo
+
+# Zmieniamy hasło na małe litery, żeby uniknąć błędu wielkości liter
+haslo_male=${haslo,,}
+
+if [ "$haslo_male" == "burek" ] || [ "$haslo_male" == "burek123" ]; then
+    echo -e "\e[32mDostęp przyznany. Witaj, Administratorze.\e[0m"
+    sleep 2
+    exec ./p7.sh
+else
+    echo -e "\e[31mNiewłaściwe hasło. Zgłoszono incydent do działu IT. Zginąłeś.\e[0m"
+    exit 1
+fi
