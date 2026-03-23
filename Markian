@@ -1,0 +1,20 @@
+#!/bin/bash
+clear
+echo -e "\e[35m--- AKT 5: SecOps ---\e[0m"
+echo "Skradasz się przez koszary cyber-ogarów. Nagle jeden z nich cię wyczuwa!"
+echo "Masz ułamek sekundy, by rzucić wirusa ogłuszającego."
+echo ""
+echo "Wirus ma 50% szans na zadziałanie."
+read -p "Naciśnij [ENTER], aby rzucić..."
+
+# Losowanie liczby od 1 do 10
+szansa=$((1 + $RANDOM % 10))
+
+if [ $szansa -le 5 ]; then
+    echo -e "\e[32mUDAŁO SIĘ!\e[0m Ogar został zdezorientowany. Biegniesz dalej."
+    sleep 2
+    exec ./p22.sh
+else
+    echo -e "\e[31mPUDŁO!\e[0m Ogar rozrywa twój awatar na strzępy. Zginąłeś."
+    exit 1
+fi
