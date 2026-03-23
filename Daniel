@@ -1,43 +1,11 @@
-Start
-#!/bin/bash
-clear
-echo -e "\e[32m======================================\e[0m"
-echo -e "\e[32m        UCIECZKA Z /ROOT              \e[0m"
-echo -e "\e[32m======================================\e[0m"
-echo "System operacyjny: Nieznany."
-echo -e "\e[31mOSTRZEŻENIE: Wykryto nieautoryzowaną synchronizację neuronową!\e[0m"
-echo "Twój umysł został uwięziony w serwerze OmniCorp."
-echo ""
-read -p "Naciśnij [ENTER], aby zainicjować protokół ucieczki..."
-exec ./p1.sh
+💻 Daniel: Akt 1 - "Przebudzenie i Kwarantanna" (start.sh, p1.sh - p5.sh) Twój cel: Wprowadzić gracza w klimat i dać mu pierwsze wyzwania.
 
+p1: Wybór metody ucieczki z celi (wytrych, zwarcie, logi).
 
-----P1------
-#!/bin/bash
-clear
-echo -e "\e[36m--- AKT 1: KWARANTANNA ---\e[0m"
-echo "Budzisz się w wirtualnej celi. Dookoła widzisz tylko kod szesnastkowy."
-echo "Drzwi blokuje prosty zamek logiczny."
-echo ""
-echo "1. Użyj cyfrowego wytrycha (Brute-force)."
-echo "2. Przeskanuj logi systemu w poszukiwaniu hasła."
-echo "3. Czekaj na strażnika."
-echo ""
-read -p "Wybierz akcję (1-3): " akcja
+p2: Spotkanie z pierwszym, słabym antywirusem (zagadka z PIN-em).
 
-case $akcja in
-    1)
-        echo -e "\e[31mBŁĄD!\e[0m Zamek wywołał zwarcie. Tracisz cenne sekundy, ale drzwi puszczają."
-        sleep 2
-        exec ./p2.sh
-        ;;
-    2)
-        echo -e "\e[32mSUKCES!\e[0m Znalazłeś lukę w zabezpieczeniach. Drzwi otwierają się po cichu."
-        sleep 2
-        exec ./p2.sh
-        ;;
-    *)
-        echo -e "\e[31mStrażnik cię znalazł. Twój umysł zostaje wymazany. KONIEC GRY.\e[0m"
-        exit 1
-        ;;
-esac
+p3: Korytarz śmieciowych danych (szukanie pliku w wirtualnym śmietniku).
+
+p4: Przywracanie zasilania (odpowiednia sekwencja cyfr).
+
+p5 (Miniboss): Pierwszy Firewall. Trzy proste pytania; błąd cofa na start poziomu.
