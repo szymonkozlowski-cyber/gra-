@@ -1,0 +1,20 @@
+#!/bin/bash
+clear
+echo -e "\e[41m\e[97m --- AKT 6: KERNEL PANIC --- \e[0m"
+echo -e "\e[31mERR: TEMPERATURE CRITICAL. OVERHEATING IN PROGRESS.\e[0m"
+echo -e "\e[31mERR: SECTOR 4 OFFLINE.\e[0m"
+echo "Jądro systemu się sypie! Wszędzie czerwone alerty."
+echo "Widzisz dwie konsole ratunkowe."
+echo ""
+echo "1. Przekieruj zasilanie do chłodzenia."
+echo "2. Ignoruj błędy i biegnij prosto do bramy ROOTa."
+read -p "Co robisz?! (1/2): " panika
+
+if [ "$panika" == "2" ]; then
+    echo -e "\e[32mDobra decyzja.\e[0m To były tylko fałszywe flagi systemu, żeby cię zatrzymać!"
+    sleep 2
+    exec ./p27.sh
+else
+    echo -e "\e[31mZatrzymałeś się, żeby pomóc korporacji. Serwer wybuchł ci w twarz. Zginąłeś.\e[0m"
+    exit 1
+fi
