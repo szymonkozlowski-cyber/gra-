@@ -16,3 +16,91 @@ else
     echo -e "\e[31mBłąd księgowy! Środki zamrożone. Ochrona w drodze. Zginąłeś.\e[0m"
     exit 1
 fi
+
+#!/bin/bash
+
+echo "=== AKT 3: SEKTOR FINANSOWY ==="
+echo ""
+
+# ---------------- p11 ----------------
+echo "[p11] Włamanie do portfeli OmniCorp"
+echo "Przechwycono zaszyfrowany klucz:"
+echo "U2VjdXJlX0FjY2Vzc18yMDc3"
+echo "Wskazówka: standardowe kodowanie..."
+read -p "Podaj odszyfrowany klucz: " key
+
+if [[ "$key" != "Secure_Access_2077" ]]; then
+    echo "❌ Błędny klucz. Alarm aktywowany."
+    exit 1
+fi
+echo "✅ Dostęp uzyskany."
+echo ""
+
+# ---------------- p12 ----------------
+echo "[p12] SYSTEM KSIĘGOWY"
+echo "Saldo początkowe: 2450"
+echo "Transakcje: +120 -300 +50 -70 +500 -200"
+read -p "Podaj końcowe saldo: " answer
+
+if [[ "$answer" -ne 2550 ]]; then
+    echo "❌ Błąd księgowy."
+    exit 1
+fi
+echo "✅ Bilans poprawny."
+echo ""
+
+# ---------------- p13 ----------------
+echo "[p13] ALERT SYSTEMOWY"
+echo "1) Ucieknij"
+echo "2) Wgraj maskowanie"
+read -t 5 -p "Wybór (1/2): " choice
+echo ""
+
+if [[ "$choice" != "2" ]]; then
+    echo "❌ Wykryto Cię."
+    exit 1
+fi
+echo "✅ Maskowanie aktywne."
+echo ""
+
+# ---------------- p14 ----------------
+echo "[p14] PRANIE CYFROWYCH ŚRODKÓW"
+echo "1) A->B->C"
+echo "2) A->D->C"
+echo "3) A->B->D"
+read -p "Wybór (1-3): " choice2
+
+if [[ "$choice2" != "2" ]]; then
+    echo "❌ Śledzenie wykryte."
+    exit 1
+fi
+echo "✅ Środki wyprane."
+echo ""
+
+# ---------------- p15 ----------------
+echo "[p15] MINIBOSS: AUDYTOR"
+
+read -p "1) Ile to 3^4? " q1
+if [[ "$q1" != "81" ]]; then
+    echo "❌ Błąd."
+    exit 1
+fi
+
+read -p "2) Wynik: 20 % 6 = ? " q2
+if [[ "$q2" != "2" ]]; then
+    echo "❌ Błąd."
+    exit 1
+fi
+
+echo "3) Mam klucze, ale nie otwieram drzwi. Mam spację, ale nie jestem kosmosem."
+read -p "Czym jestem? " q3
+
+if [[ "$q3" != "klawiatura" && "$q3" != "keyboard" ]]; then
+    echo "❌ Audyt niezaliczony."
+    exit 1
+fi
+
+echo ""
+echo "🎉 GRATULACJE!"
+echo "💀 Przejąłeś sektor finansowy OmniCorp."
+exit 0
