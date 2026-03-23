@@ -1,20 +1,126 @@
+----p26----
 #!/bin/bash
 clear
 echo -e "\e[41m\e[97m --- AKT 6: KERNEL PANIC --- \e[0m"
-echo -e "\e[31mERR: TEMPERATURE CRITICAL. OVERHEATING IN PROGRESS.\e[0m"
-echo -e "\e[31mERR: SECTOR 4 OFFLINE.\e[0m"
-echo "Jądro systemu się sypie! Wszędzie czerwone alerty."
+sleep 1
+
+# Symulacja sypiącego się serwera
+for i in {1..15}; do
+    echo -e "\e[31m[CRITICAL] SECTOR $RANDOM OFFLINE. CORE TEMP: OVER 180°C!\e[0m"
+    sleep 0.05
+done
+
+echo ""
+echo -e "\e[33mJądro systemu się topi! Czerwone alerty zasłaniają cały interfejs.\e[0m"
 echo "Widzisz dwie konsole ratunkowe."
 echo ""
-echo "1. Przekieruj zasilanie do chłodzenia."
-echo "2. Ignoruj błędy i biegnij prosto do bramy ROOTa."
-read -p "Co robisz?! (1/2): " panika
+echo "1. Przekieruj zasilanie do awaryjnego chłodzenia."
+echo "2. Zignoruj ostrzeżenia i biegnij prosto do bramy ROOTa."
+echo ""
+read -p "Decyzja (1/2): " panika
 
 if [ "$panika" == "2" ]; then
-    echo -e "\e[32mDobra decyzja.\e[0m To były tylko fałszywe flagi systemu, żeby cię zatrzymać!"
+    echo -e "\e[32mDobra decyzja.\e[0m To system obronny próbował cię spowolnić!"
     sleep 2
     exec ./p27.sh
 else
-    echo -e "\e[31mZatrzymałeś się, żeby pomóc korporacji. Serwer wybuchł ci w twarz. Zginąłeś.\e[0m"
+    echo -e "\e[31mZatrzymałeś się, żeby ratować serwer. Rdzeń wybuchł ci w twarz. KONIEC GRY.\e[0m"
+    sleep 2
     exit 1
 fi
+
+
+
+----p27----
+#!/bin/bash
+clear
+echo -e "\e[41m\e[97m --- POZIOM 27: NIESTABILNE PROCESY --- \e[0m"
+echo "Biegniesz przez Kernel. Nagle ekran zamarza."
+echo -e "\e[31mFATAL ERROR 0x000000FF: Wykryto uszkodzenie awatara gracza.\e[0m"
+echo -e "\e[31mZalecana natychmiastowa hibernacja procesu.\e[0m"
+echo ""
+echo "Czy chcesz zaakceptować hibernację ratunkową? (T/N)"
+read -p "> " wybor
+
+# Przekształcamy odpowiedź na wielkie litery
+wybor_upper=${wybor^^}
+
+if [ "$wybor_upper" == "N" ]; then
+    echo -e "\e[32mOdrzuciłeś iluzję.\e[0m Błąd znika, droga wolna."
+    sleep 2
+    exec ./p28.sh
+else
+    echo -e "\e[31mZaakceptowałeś hibernację. Twój umysł został uwięziony na zawsze. KONIEC GRY.\e[0m"
+    sleep 2
+    exit 1
+fi
+---p28---
+#!/bin/bash
+clear
+echo -e "\e[41m\e[97m --- POZIOM 28: DEKOMPILACJA BRAMY --- \e[0m"
+echo "Stajesz przed Murem Danych. Mechanizm zamka to stara bramka logiczna."
+echo "Na panelu wyświetla się równanie weryfikacyjne:"
+echo ""
+echo -e "\e[36m( PRAWDA AND FAŁSZ ) OR PRAWDA = ?\e[0m"
+echo ""
+echo "Podaj wynik logiczny: wpisz 1 (PRAWDA) lub 0 (FAŁSZ)."
+read -p "> " wynik
+
+if [ "$wynik" == "1" ]; then
+    echo -e "\e[32mZamek klika. Kod maszynowy rozpada się na kawałki. Przechodzisz.\e[0m"
+    sleep 2
+    exec ./p29.sh
+else
+    echo -e "\e[31mBłąd logiczny. Brama odparowuje twój awatar. KONIEC GRY.\e[0m"
+    sleep 2
+    exit 1
+fi
+--p29---
+#!/bin/bash
+clear
+echo -e "\e[41m\e[97m --- POZIOM 29: PROTOKÓŁ CZYSZCZENIA --- \e[0m"
+echo -e "\e[31mINICJALIZACJA PROTOKOŁU CZYSZCZENIA PAMIĘCI KERNELA...\e[0m"
+echo "Ściany wirtualnego tunelu zaczynają się zapadać!"
+echo "Masz dokładnie 5 SEKUND, aby wpisać komendę anulującą: ABORT"
+echo ""
+
+# Odczyt z limitem czasu (5 sekund)
+if read -t 5 -p "SZYBKO: " komenda; then
+    if [ "${komenda^^}" == "ABORT" ]; then
+        echo -e "\n\e[32mCzyszczenie przerwane w ostatniej mikrosekundzie! Oddychasz z ulgą...\e[0m"
+        sleep 2
+        exec ./p30.sh
+    else
+        echo -e "\n\e[31mZła komenda! System formatuje twój mózg. KONIEC GRY.\e[0m"
+        sleep 2
+        exit 1
+    fi
+else
+    echo -e "\n\e[31mCZAS MINĄŁ! Fala czyszcząca uderza w ciebie. KONIEC GRY.\e[0m"
+    sleep 2
+    exit 1
+fi
+---p30---
+#!/bin/bash
+clear
+echo -e "\e[41m\e[97m --- POZIOM 30: PRZEDSIONEK BOGÓW --- \e[0m"
+echo "Opadł kurz po czyszczeniu pamięci. Przed tobą wisi wielka, złota ikona kłódki."
+echo "To ostatnia zapora. Za nią znajduje się cel całej waszej operacji: folder /root."
+echo ""
+echo "Podnosisz swój cyfrowy łamacz haseł. Moc jest na wyczerpaniu."
+read -p "Naciśnij [ENTER], aby uderzyć w zaporę ze wszystkich sił..."
+echo ""
+
+# Efekt rozbijania
+echo -n "Uderzenie 1..."
+sleep 1
+echo " Rysa!"
+echo -n "Uderzenie 2..."
+sleep 1
+echo " Kłódka pęka!"
+echo ""
+echo -e "\e[32mBRAMA ZNISZCZONA. Wkraczasz do strefy /root.\e[0m"
+sleep 2
+
+# Przejście do Aktu 7 (Szymon)
+exec ./p31.sh
