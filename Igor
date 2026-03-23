@@ -1,0 +1,18 @@
+#!/bin/bash
+clear
+echo -e "\e[32m--- AKT 3: SEKTOR FINANSOWY $$ ---\e[0m"
+echo "Wchodzisz do banku danych. Zabezpieczenia blokują przelew, dopóki nie"
+echo "zbalansujesz głównego konta. Na ekranie miga równanie:"
+echo ""
+echo "Jeśli x = 5, a y = 12, ile wynosi (x * y) - 10?"
+echo ""
+read -p "Wprowadź wynik: " wynik
+
+if [ "$wynik" == "50" ]; then
+    echo -e "\e[32mKonta zbalansowane. Przelew autoryzowany. Droga wolna.\e[0m"
+    sleep 2
+    exec ./p12.sh
+else
+    echo -e "\e[31mBłąd księgowy! Środki zamrożone. Ochrona w drodze. Zginąłeś.\e[0m"
+    exit 1
+fi
