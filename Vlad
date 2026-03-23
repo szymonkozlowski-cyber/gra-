@@ -1,0 +1,20 @@
+#!/bin/bash
+clear
+echo -e "\e[90m--- AKT 4: DEEP STORAGE ---\e[0m"
+echo -n "Nawiązywanie połączenia ze starym serwerem"
+sleep 1; echo -n "."; sleep 1; echo -n "."; sleep 1; echo "."
+echo "Baud rate: 300. Pamięć: 64KB."
+echo "Wchodzisz do zapomnianego sektora. Widzisz stary, zardzewiały plik wykonywalny."
+echo ""
+echo "1. Uruchom plik (RUN)."
+echo "2. Obejdź go bokiem."
+read -p "> " wybor
+
+if [ "$wybor" == "1" ]; then
+    echo -e "\e[33mUruchamianie...\e[0m Plik zawierał starą mapę serwera! Ułatwi ci to drogę."
+    sleep 2
+    exec ./p17.sh
+else
+    echo -e "\e[31mWdepnąłeś w bad sector. Pamięć uszkodzona. Zginąłeś.\e[0m"
+    exit 1
+fi
