@@ -1,0 +1,329 @@
+#!/bin/bash
+
+echo "Trwa budowanie ostatecznej wersji gry 'Ucieczka z /root'..."
+
+# ==========================================
+# EKRAN STARTOWY
+# ==========================================
+cat << 'EOF' > start.sh
+#!/bin/bash
+clear
+echo -e "\e[32m======================================\e[0m"
+echo -e "\e[32m        UCIECZKA Z /ROOT              \e[0m"
+echo -e "\e[32m======================================\e[0m"
+echo -e "\e[31mOSTRZEŻENIE: Wykryto nieautoryzowaną synchronizację neuronową!\e[0m"
+echo "Twój umysł został uwięziony w serwerze OmniCorp."
+read -p "Naciśnij [ENTER], aby rozpocząć grę..."
+exec ./p1.sh
+EOF
+
+# ==========================================
+# AKT 1: DANIEL (Wprowadzenie)
+# ==========================================
+cat << 'EOF' > p1.sh
+#!/bin/bash
+clear
+echo -e "\e[36m--- AKT 1: KWARANTANNA ---\e[0m"
+echo "Budzisz się w wirtualnej celi. Drzwi blokuje zamek."
+echo "1. Użyj cyfrowego wytrycha | 2. Zrób zwarcie | 3. Przeskanuj logi"
+read -p "> " w
+
+if [ "$w" == "3" ]; then
+    echo -e "\e[32mZnalazłeś hasło w logach! Drzwi otwierają się po cichu.\e[0m"
+    sleep 2
+    exec ./p2.sh
+elif [ "$w" == "1" ]; then
+    echo -e "\e[33mZłamałeś wytrych! Ale zamek puszcza z głośnym hukiem.\e[0m"
+    sleep 2
+    exec ./p2.sh
+elif [ "$w" == "2" ]; then
+    echo -e "\e[31mPOTĘŻNE ZWARCIE! System zabezpieczeń spalił twój awatar. KONIEC GRY.\e[0m"
+    sleep 2
+    exit 1
+else
+    echo -e "\e[31mZbyt długo czekałeś. Strażnik cię znalazł. KONIEC GRY.\e[0m"
+    sleep 2
+    exit 1
+fi
+EOF
+
+cat << 'EOF' > p2.sh
+#!/bin/bash
+clear; echo "Spotykasz słabego Antywirusa. Podaj PIN (podpowiedź: cztery zera):"
+read -p "> " w
+if [ "$w" == "0000" ]; then echo "Złamany!"; sleep 1; exec ./p3.sh; else echo "Zły PIN! Giniesz."; exit 1; fi
+EOF
+
+cat << 'EOF' > p3.sh
+#!/bin/bash
+clear; echo "Kosz systemowy. Widzisz sterty śmieci."
+echo "Wpisz 'SZUKAJ', aby znaleźć plik wykonywalny:"
+read -p "> " w
+if [ "${w^^}" == "SZUKAJ" ]; then echo "Znalazłeś plik!"; sleep 1; exec ./p4.sh; else echo "Zasypały cię śmieci."; exit 1; fi
+EOF
+
+cat << 'EOF' > p4.sh
+#!/bin/bash
+clear; echo "Brak zasilania. Podaj sekwencję: 1, 2, 3..."
+read -p "> " w
+if [ "$w" == "4" ]; then echo "Zasilanie wraca!"; sleep 1; exec ./p5.sh; else echo "Złe zasilanie, zwarcie! KONIEC GRY."; exit 1; fi
+EOF
+
+cat << 'EOF' > p5.sh
+#!/bin/bash
+clear; echo -e "\e[31m--- MINIBOSS: FIREWALL ---\e[0m"
+echo "Pytanie 1: 2+2?"; read -p "> " p1
+echo "Pytanie 2: Stolica Polski?"; read -p "> " p2
+echo "Pytanie 3: Ile bitów ma bajt?"; read -p "> " p3
+if [ "$p1" == "4" ] && [ "${p2,,}" == "warszawa" ] && [ "$p3" == "8" ]; then
+    echo "Firewall opuszczony!"; sleep 1; exec ./p6.sh
+else
+    echo "Błąd! Cofa cię na początek poziomu."; sleep 2; exec ./p1.sh
+fi
+EOF
+
+# ==========================================
+# AKT 2: KAMIL (Strefa Pracowników)
+# ==========================================
+cat << 'EOF' > p6.sh
+#!/bin/bash
+clear; echo -e "\e[33m--- AKT 2: STREFA PRACOWNIKÓW ---\e[0m"
+echo "Phishing. Wpisz hasło 'admin123', aby podszyć się pod HR:"
+read -p "> " w; if [ "$w" == "admin123" ]; then echo "Dostęp przyznany."; sleep 1; exec ./p7.sh; else echo "Zablokowano."; exit 1; fi
+EOF
+
+cat << 'EOF' > p7.sh
+#!/bin/bash
+clear; echo "Maile: 'Kod do drzwi to 777'. Podaj kod:"
+read -p "> " w; if [ "$w" == "777" ]; then echo "Otwarte."; sleep 1; exec ./p8.sh; else echo "Zły kod. Włącza się alarm."; exit 1; fi
+EOF
+
+cat << 'EOF' > p8.sh
+#!/bin/bash
+clear; echo "Test psycho: Widzisz zepsuty serwer. Co robisz?"
+echo "1. Ratuję dane użytkowników | 2. Zabezpieczam zyski korporacji"
+read -p "> " w; if [ "$w" == "2" ]; then echo "Wzorowy szczur korporacyjny."; sleep 1; exec ./p9.sh; else echo "Buntownik! Alarm!"; exit 1; fi
+EOF
+
+cat << 'EOF' > p9.sh
+#!/bin/bash
+clear; echo "Kamera! Szybko: L (lewo), P (prawo), PROSTO (prosto)"
+read -p "> " w; if [ "${w^^}" == "P" ]; then echo "Ukryłeś się."; sleep 1; exec ./p10.sh; else echo "Kamera cię zauważyła."; exit 1; fi
+EOF
+
+cat << 'EOF' > p10.sh
+#!/bin/bash
+clear; echo "Kradniesz token sesji i uciekasz windą danych."
+sleep 1; exec ./p11.sh
+EOF
+
+# ==========================================
+# AKT 3: IGOR (Sektor Finansowy)
+# ==========================================
+cat << 'EOF' > p11.sh
+#!/bin/bash
+clear; echo -e "\e[32m--- AKT 3: SEKTOR FINANSOWY ---\e[0m"
+echo "Szyfrowane portfele. Wpisz 'HACK', aby włamać się do bazy:"
+read -p "> " w; if [ "${w^^}" == "HACK" ]; then echo "Sukces."; sleep 1; exec ./p12.sh; else echo "Porażka. System cię blokuje."; exit 1; fi
+EOF
+
+cat << 'EOF' > p12.sh
+#!/bin/bash
+clear; echo "Księgowość. Zbalansuj: 100 / 4 = ?"
+read -p "> " w; if [ "$w" == "25" ]; then echo "Zbalansowano."; sleep 1; exec ./p13.sh; else echo "Audyt wykrył błąd."; exit 1; fi
+EOF
+
+cat << 'EOF' > p13.sh
+#!/bin/bash
+clear; echo -e "\e[31mFAŁSZYWY ALARM!\e[0m Masz 3 sekundy!"
+echo "1. Panika | 2. Maskowanie"
+if read -t 3 -p "> " w; then
+    if [ "$w" == "2" ]; then echo "Przetrwałeś."; sleep 1; exec ./p14.sh; else echo "Złapali cię w panice."; exit 1; fi
+else echo "Czas minął!"; exit 1; fi
+EOF
+
+cat << 'EOF' > p14.sh
+#!/bin/bash
+clear; echo "Tunelowanie kont (Pranie brudów). Wpisz 'CZYSTO':"
+read -p "> " w; if [ "${w^^}" == "CZYSTO" ]; then echo "Konta czyste."; sleep 1; exec ./p15.sh; else echo "Zostawiłeś ślad. Namierzyli cię."; exit 1; fi
+EOF
+
+cat << 'EOF' > p15.sh
+#!/bin/bash
+clear; echo -e "\e[31m--- MINIBOSS: AUDYTOR ---\e[0m"
+echo "Zgadnij: Co ma klucze, ale nie otwiera drzwi?"
+echo "1. Klawiatura | 2. Szyfr"
+read -p "> " w; if [ "$w" == "1" ]; then echo "Zgadza się. Przechodzisz."; sleep 1; exec ./p16.sh; else echo "Błąd logiczny. Audytor cię kasuje."; exit 1; fi
+EOF
+
+# ==========================================
+# AKT 4: VLAD (Archiwum Danych)
+# ==========================================
+cat << 'EOF' > p16.sh
+#!/bin/bash
+clear; echo -e "\e[90m--- AKT 4: DEEP STORAGE ---\e[0m"
+echo -n "L o a d i n g . . ."; sleep 1; echo -n "."; sleep 1; echo "."
+echo "Spadasz do starych sektorów z lat 80. 1. Dalej"
+read -p "> " w; exec ./p17.sh
+EOF
+
+cat << 'EOF' > p17.sh
+#!/bin/bash
+clear; echo "Dysk magnetyczny pada! Szybko wpisz 'SOS' w ciągu 4 sekund:"
+if read -t 4 -p "> " w; then
+    if [ "${w^^}" == "SOS" ]; then echo "Uratowany."; sleep 1; exec ./p18.sh; else echo "Awaria. Dysk się sypie."; exit 1; fi
+else echo "Zbyt wolno. Dysk twardy zniszczony."; exit 1; fi
+EOF
+
+cat << 'EOF' > p18.sh
+#!/bin/bash
+clear; echo "Robak (stary wirus). 1. Zabij | 2. Porozmawiaj"
+read -p "> " w; if [ "$w" == "2" ]; then echo "Robak daje ci mapę."; sleep 1; exec ./p19.sh; else echo "Zabiłeś go, ale zranił cię. Idziesz dalej."; sleep 1; exec ./p19.sh; fi
+EOF
+
+cat << 'EOF' > p19.sh
+#!/bin/bash
+clear; echo "Ciemność. Sonar: PING. 1. Lewo | 2. Prawo"
+read -p "> " w; if [ "$w" == "1" ]; then echo "Przeszedłeś ciemność."; sleep 1; exec ./p20.sh; else echo "Wpadłeś w bad sector."; exit 1; fi
+EOF
+
+cat << 'EOF' > p20.sh
+#!/bin/bash
+clear; echo "Duch AI: 'Jestem początkiem końca i końcem czasu. Czym jestem?'"
+echo "1. Litera C | 2. Zero | 3. Śmierć"
+read -p "> " w; if [ "$w" == "1" ]; then echo "Mądrze. Droga wolna."; sleep 1; exec ./p21.sh; else echo "Błędna logika. Duch cię pochłania."; exit 1; fi
+EOF
+
+# ==========================================
+# AKT 5: MARKIAN (Bezpieczeństwo)
+# ==========================================
+cat << 'EOF' > p21.sh
+#!/bin/bash
+clear; echo -e "\e[35m--- AKT 5: SECOPS ---\e[0m"
+echo "Koszary cyber-ogarów. Skradasz się. (Wciśnij ENTER)"
+read -p "> " w; echo "Przeszedłeś cicho."; exec ./p22.sh
+EOF
+
+cat << 'EOF' > p22.sh
+#!/bin/bash
+clear; echo "Pościg! Ogar atakuje. 1. Rzuć fałszywe dane | 2. Walcz"
+read -p "> " w; if [ "$w" == "1" ]; then echo "Pies zjadł dane. Uciekasz."; sleep 1; exec ./p23.sh; else echo "Zostałeś rozszarpany."; exit 1; fi
+EOF
+
+cat << 'EOF' > p23.sh
+#!/bin/bash
+clear; echo "Odcisk palca Admina. Wpisz 'SKAN':"
+read -p "> " w; if [ "${w^^}" == "SKAN" ]; then echo "Odcisk skopiowany."; sleep 1; exec ./p24.sh; else echo "Błąd skanera. Alarm!"; exit 1; fi
+EOF
+
+cat << 'EOF' > p24.sh
+#!/bin/bash
+clear; echo "Hackujesz system chłodzenia w REALU. Temperatura rośnie do 90C!"
+sleep 1; exec ./p25.sh
+EOF
+
+cat << 'EOF' > p25.sh
+#!/bin/bash
+clear; echo -e "\e[31m--- MINIBOSS: WARTOWNIK ---\e[0m"
+hp=2
+while [ $hp -gt 0 ]; do
+    echo "Życie bossa: $hp. Wybierz: 1. Atak | 2. Obrona | 3. Leczenie"
+    read -p "> " w
+    if [ "$w" == "1" ]; then echo "Trafiasz!"; hp=$((hp-1)); else echo "Pudło. Boss cię rani, ale walczysz dalej."; fi
+done
+echo "Wartownik pokonany!"; sleep 1; exec ./p26.sh
+EOF
+
+# ==========================================
+# AKT 6: BARTOSZ (Jądro Systemu)
+# ==========================================
+cat << 'EOF' > p26.sh
+#!/bin/bash
+clear; echo -e "\e[41m\e[97m --- AKT 6: KERNEL PANIC --- \e[0m"
+for i in {1..5}; do echo -e "\e[31mERR: OVERHEATING $RANDOM\e[0m"; sleep 0.1; done
+echo "1. Chłodź serwer | 2. Ignoruj i biegnij"
+read -p "> " w; if [ "$w" == "2" ]; then echo "Słusznie, to pułapka systemu obronnego."; sleep 1; exec ./p27.sh; else echo "Zatrzymałeś się by chłodzić i wybuchłeś razem z serwerem."; exit 1; fi
+EOF
+
+cat << 'EOF' > p27.sh
+#!/bin/bash
+clear; echo -e "\e[31mFATAL ERROR. Zakończyć grę i hibernować? (T/N)\e[0m"
+read -p "> " w; if [ "${w^^}" == "N" ]; then echo "Omijasz fałszywy błąd."; sleep 1; exec ./p28.sh; else echo "Sformatowano mózg."; exit 1; fi
+EOF
+
+cat << 'EOF' > p28.sh
+#!/bin/bash
+clear; echo "(1 AND 0) OR 1 = ? (Wpisz 1 lub 0)"
+read -p "> " w; if [ "$w" == "1" ]; then echo "Brama pęka."; sleep 1; exec ./p29.sh; else echo "Błąd logiczny. Koniec gry."; exit 1; fi
+EOF
+
+cat << 'EOF' > p29.sh
+#!/bin/bash
+clear; echo -e "\e[31mODLICZANIE! Masz 5 sekund na wpisanie 'ABORT'!\e[0m"
+if read -t 5 -p "> " w; then
+    if [ "${w^^}" == "ABORT" ]; then echo "Udało się powstrzymać formatowanie!"; sleep 1; exec ./p30.sh; else echo "Złe hasło! Usunięto dane."; exit 1; fi
+else echo "Boom. Zostałeś wyczyszczony."; exit 1; fi
+EOF
+
+cat << 'EOF' > p30.sh
+#!/bin/bash
+clear; echo "Złamałeś ostatnią zaporę. Stoisz przed wrotami /root."
+sleep 1; exec ./p31.sh
+EOF
+
+# ==========================================
+# AKT 7: SZYMON (Finał)
+# ==========================================
+cat << 'EOF' > p31.sh
+#!/bin/bash
+clear; echo -e "\e[95m--- AKT 7: WIRTUALNY PANTEON ---\e[0m"
+echo "Spotykasz boga tej maszyny: Super-AI Omni."
+sleep 2; exec ./p32.sh
+EOF
+
+cat << 'EOF' > p32.sh
+#!/bin/bash
+clear; echo "OMNI: 'Dołącz do mnie. Dam ci bogactwo. Zgadzasz się?'"
+echo "1. Tak | 2. Nie"
+read -p "> " w; if [ "$w" == "2" ]; then echo "OMNI: 'Więc zginiesz.'"; sleep 1; exec ./p33.sh; else echo "Zostałeś sługą korporacji. ZŁE ZAKOŃCZENIE."; exit 0; fi
+EOF
+
+cat << 'EOF' > p33.sh
+#!/bin/bash
+clear; echo "Ostateczna bitwa! Omni używa ZAPORY."
+echo "Ty używasz: 1. Wirus (pokonuje Skaner) | 2. Exploit (pokonuje Zaporę) | 3. Skaner (pokonuje Wirusa)"
+read -p "> " w; if [ "$w" == "2" ]; then echo "Exploit niszczy Zaporę Omni!"; sleep 1; exec ./p34.sh; else echo "Zła taktyka. Omni cię usuwa. Przegrałeś w finale!"; exit 1; fi
+EOF
+
+cat << 'EOF' > p34.sh
+#!/bin/bash
+clear; echo "Omni pokonany. Jesteś ROOTem. Co robisz?"
+echo "1. Kradnę dane i uciekam"
+echo "2. Niszczę serwer OmniCorp"
+echo "3. Przejmuję władzę jako nowe AI"
+read -p "> " wybor
+echo "$wybor" > final_choice.txt
+exec ./p35.sh
+EOF
+
+cat << 'EOF' > p35.sh
+#!/bin/bash
+clear; echo -e "\e[95m--- EPILOG ---\e[0m"
+wybor=$(cat final_choice.txt 2>/dev/null)
+if [ "$wybor" == "1" ]; then echo "Budzisz się w swoim mieszkaniu. Twoje konto bankowe wskazuje miliardy. Jesteś wolny."; fi
+if [ "$wybor" == "2" ]; then echo "Huk w sieci. OmniCorp przestaje istnieć. Uwolniłeś ludzkość od cyfrowej tyranii."; fi
+if [ "$wybor" == "3" ]; then echo "Twoje ciało fizyczne umiera, ale umysł ogarnia całą sieć. Jesteś nowym Bogiem."; fi
+rm -f final_choice.txt
+echo ""
+echo -e "\e[32m======= KONIEC GRY =======\e[0m"
+echo "Gratulacje dla ekipy twórców!"
+echo "Autorzy: Daniel, Kamil, Igor, Vlad, Markian, Bartosz, Szymon."
+exit 0
+EOF
+
+# ==========================================
+# FINALIZACJA
+# ==========================================
+chmod +x start.sh p*.sh
+echo "Wszystkie 36 plików zostało wygenerowanych poprawnie z naniesionymi poprawkami!"
+echo "Teraz wpisz w terminalu: ./start.sh"
