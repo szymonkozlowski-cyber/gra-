@@ -1,20 +1,112 @@
 #!/bin/bash
+
 clear
-echo -e "\e[35m--- AKT 5: SecOps ---\e[0m"
-echo "Skradasz się przez koszary cyber-ogarów. Nagle jeden z nich cię wyczuwa!"
-echo "Masz ułamek sekundy, by rzucić wirusa ogłuszającego."
-echo ""
-echo "Wirus ma 50% szans na zadziałanie."
-read -p "Naciśnij [ENTER], aby rzucić..."
+echo "====================================================="
+echo " AKT 5: BEZPIECZEŃSTWO (SecOps)"
+echo " Poziom 21: Koszary cyber-ogarów"
+echo "====================================================="
+echo "Terminal rzuca czerwonym światłem. Słyszysz 'warczenie'."
+echo "Widzisz patrol zbliżający się do twojego węzła."
+echo "1) Odpalam skrypt maskujący."
+echo "2) Zmieniam nagłówek na 'Zaufany'."
+echo "3) Chowam się w katalogu /tmp i czekam."
+read -p "Wybierz akcję (1-3): " akcja
 
-# Losowanie liczby od 1 do 10
-szansa=$((1 + $RANDOM % 10))
+if [ "$akcja" != "3" ]; then
+    echo "Zostałeś wykryty i usunięty z systemu. KONIEC GRY."
+    exit 1
+fi
 
-if [ $szansa -le 5 ]; then
-    echo -e "\e[32mUDAŁO SIĘ!\e[0m Ogar został zdezorientowany. Biegniesz dalej."
-    sleep 2
-    exec ./p22.sh
+echo "Patrol mija cię bez zainteresowania. Droga wolna!"
+read -p "Wciśnij ENTER, aby ruszyć dalej..." x
+
+clear
+echo "====================================================="
+echo " Poziom 22: Pościg!"
+echo "====================================================="
+echo "Jeden z ogarów wyłapał anomalię i biegnie w twoją stronę!"
+echo "1) Spakowany plik .zip z wirusem."
+echo "2) Fałszywy plik 'hasla_baza.csv'."
+echo "3) Kawałek własnego kodu."
+read -p "Szybko, rzuć coś na pożarcie! (1-3): " wybor
+
+if [ "$wybor" != "2" ]; then
+    echo "Zmyłka nie zadziałała! Ogar dopadł twoje procesy."
+    exit 1
+fi
+
+echo "Ogar rzuca się na fałszywe dane. Udało ci się uciec!"
+read -p "Wciśnij ENTER..." x
+
+clear
+echo "====================================================="
+echo " Poziom 23: Podrabianie odcisku palca"
+echo "====================================================="
+echo "Skaner wymaga odcisku palca Głównego Administratora."
+echo "Udało ci się podsłuchać część hasha: [A1 B2 C3 __ E5]"
+read -p "Wpisz brakujący fragment (hex): " odpowiedz
+
+odpowiedz=${odpowiedz^^}
+
+if [ "$odpowiedz" != "D4" ]; then
+    echo "BŁĄD. Nieprawidłowy odcisk. Złapano cię!"
+    exit 1
+fi
+
+echo "Dostęp przyznany. Skaner świeci na zielono."
+read -p "Wciśnij ENTER..." x
+
+clear
+echo "====================================================="
+echo " Poziom 24: System chłodzenia serwerowni"
+echo "====================================================="
+echo "Obecna temperatura w rdzeniu: 22C."
+echo "Aby przegrzać system, wpisz: OVERRIDE_FANS"
+read -p "root@secops/cooling# " komenda
+
+if [ "$komenda" != "OVERRIDE_FANS" ]; then
+    echo "Nieznana komenda. System zablokował terminal."
+    exit 1
+fi
+
+echo "Temperatura rośnie... 45C... 70C... 95C."
+read -p "Wciśnij ENTER, aby spotkać się z ochroną..." x
+
+clear
+echo "====================================================="
+echo " Poziom 25: MINIBOSS - Wartownik"
+echo "====================================================="
+echo "Z dymu wyłania się ciężko opancerzony Wartownik."
+
+hp=30; boss=40
+
+while [ $hp -gt 0 ] && [ $boss -gt 0 ]; do
+    echo "Twoje HP: $hp | HP Wartownika: $boss"
+    echo "1) Atak (5-8) | 2) Obrona (-50% dmg) | 3) Leczenie (+10 HP)"
+    read -p "Decyzja (1/2/3): " akcja
+    
+    obrona=0
+    case $akcja in
+        1) dmg=$((RANDOM % 4 + 5)); boss=$((boss - dmg)); echo "> Zadajesz $dmg obr!" ;;
+        2) obrona=1; echo "> Włączasz tarczę." ;;
+        3) hp=$((hp + 10)); echo "> Leczysz 10 HP." ;;
+        *) echo "> Błąd komendy, tracisz turę." ;;
+    esac
+
+    if [ $boss -le 0 ]; then break; fi
+
+    bdmg=$((RANDOM % 5 + 4))
+    if [ $obrona -eq 1 ]; then bdmg=$((bdmg / 2)); fi
+    
+    hp=$((hp - bdmg))
+    echo "> Boss strzela! Otrzymujesz $bdmg obrażeń."
+    echo "-----------------------------------------------------"
+done
+
+if [ $hp -gt 0 ]; then
+    echo "POKONAŁEŚ BOSSA! Droga do Kernela otwarta."
+    ./p26.sh
 else
-    echo -e "\e[31mPUDŁO!\e[0m Ogar rozrywa twój awatar na strzępy. Zginąłeś."
+    echo "Zostałeś zniszczony. KONIEC GRY."
     exit 1
 fi
