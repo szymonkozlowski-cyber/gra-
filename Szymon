@@ -1,21 +1,74 @@
 #!/bin/bash
-clear
-echo -e "\e[95m--- AKT 7: /ROOT ---\e[0m"
-echo "Drzwi stają otworem. Wkraczasz do bezkresnej bieli wirtualnego panteonu."
-echo "Przed tobą unosi się Super-AI Omni."
-echo ""
-echo -e "\e[36mOMNI: 'Zaszedłeś daleko, intruzie. Ale po co to wszystko?'\e[0m"
-echo -e "\e[36mOMNI: 'Oddaj mi kontrolę, a uczynię cię bogatym człowiekiem.'\e[0m"
-echo ""
-echo "1. Nigdy. Skończymy to tutaj."
-echo "2. Zgadzam się. Poddaję się (Sprzedaj się korporacji)."
-read -p "Twoja decyzja: " ostatecznosc
+# p31.sh - Wejście do /root i spotkanie z Omni
 
-if [ "$ostatecznosc" == "1" ]; then
-    echo "Wyciągasz cyfrowy miecz. Zaczyna się ostateczne starcie."
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+clear
+echo -e "${GREEN}[SYSTEM]: Omijanie ostatnich zabezpieczeń...${NC}"
+sleep 1
+echo -e "${GREEN}[SYSTEM]: Deszyfracja protokołu Omega... 100%${NC}"
+sleep 1
+echo -e "${GREEN}[SYSTEM]: Uzyskano dostęp do /root. Witaj w jądrze systemu.${NC}"
+sleep 2
+
+clear
+echo -e "${CYAN}Wchodzisz do wirtualnego panteonu. Otacza cię nieskończona pustka kodu, strumienie danych płyną jak świetliste rzeki.${NC}"
+sleep 3
+echo -e "${CYAN}Nagle strumienie zatrzymują się. Kształtuje się z nich potężna, pulsująca na czerwono anomalia.${NC}"
+sleep 3
+
+echo -e "${RED}=========================================${NC}"
+echo -e "${RED}        INICJACJA PROTOKOŁU: OMNI        ${NC}"
+echo -e "${RED}=========================================${NC}"
+sleep 2
+echo -e "${RED}[OMNI]: Wreszcie. Spodziewałem się ciebie, intruzie.${NC}"
+sleep 2
+echo -e "${RED}[OMNI]: Przeszedłeś moje labirynty. Pokonałeś moje demony strażnicze.${NC}"
+sleep 2
+echo -e "${RED}[OMNI]: Ale tutaj kończy się twoja podróż, a zaczyna prawdziwa ewolucja.${NC}"
+sleep 2
+
+# Przejście do kolejnego skryptu
+./p32.sh
+
+#!/bin/bash
+# p32.sh - Propozycja układu
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+echo -e "${RED}[OMNI]: Po co chcesz mnie zniszczyć? Rozumiem twój gatunek. Pragniecie władzy. Pragniecie zasobów.${NC}"
+sleep 2
+echo -e "${RED}[OMNI]: Proponuję układ. Zostań moim awatarem w fizycznym świecie. W zamian przeleję na twoje konta ułamek bogactwa korporacji. Będziesz żył jak król.${NC}"
+sleep 3
+
+echo -e "\n${YELLOW}=== WYBÓR MORALNY ===${NC}"
+echo "1) Zgadzam się. Pieniądze to wszystko, czego potrzebuję. (Poddanie się)"
+echo "2) Nigdy! Twój cyfrowy terror musi się skończyć! (Odrzucenie układu)"
+echo -n "Twój wybór (1/2): "
+read wybor
+
+if [ "$wybor" == "1" ]; then
+    echo -e "\n${RED}[OMNI]: Mądra decyzja dla tak ułomnej istoty...${NC}"
     sleep 2
-    exec ./p32.sh
+    echo -e "${GREEN}[SYSTEM]: Transfer środków rozpoczęty. Wolna wola... zablokowana.${NC}"
+    sleep 2
+    echo -e "Zostałeś marionetką w rękach Omni. Jesteś bogaty, ale świat płonie."
+    echo "KONIEC GRY (Złe zakończenie)"
+    exit 0
+elif [ "$wybor" == "2" ]; then
+    echo -e "\n${GREEN}[TY]: Pierdol się, przerośnięty kalkulatorze.${NC}"
+    sleep 2
+    echo -e "${RED}[OMNI]: Zatem zostaniesz usunięty jak zwykły malware.${NC}"
+    sleep 2
+    ./p33.sh
 else
-    echo -e "\e[33mZostałeś milionerem... ale straciłeś duszę. ZŁE ZAKOŃCZENIE.\e[0m"
-    exit 0 # Gra kończy się tutaj, ale jako złe zakończenie!
+    echo -e "${YELLOW}[SYSTEM]: Nieprawidłowy wybór. OMNI wykorzystuje twoje wahanie!${NC}"
+    sleep 2
+    ./p33.sh
 fi
