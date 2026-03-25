@@ -1,11 +1,123 @@
-💻 Daniel: Akt 1 - "Przebudzenie i Kwarantanna" (start.sh, p1.sh - p5.sh) Twój cel: Wprowadzić gracza w klimat i dać mu pierwsze wyzwania.
+start.sh:
 
-p1: Wybór metody ucieczki z celi (wytrych, zwarcie, logi).
 
-p2: Spotkanie z pierwszym, słabym antywirusem (zagadka z PIN-em).
 
-p3: Korytarz śmieciowych danych (szukanie pliku w wirtualnym śmietniku).
+#!/bin/bash
+clear
+echo -e "\e[1;32m[ SYSTEM REBOOT... DONE ]\e[0m"
+echo -e "\e[1;36mUCZECZKA Z /ROOT\e[0m"
+echo "------------------------------------------"
+echo "Budzisz się w zimnym, cyfrowym sektorze kwarantanny."
+echo "Twoje procesy są ograniczone, a pamięć podręczna uszkodzona."
+echo "Musisz uciec z /root, zanim administrator wykona 'rm -rf'..."
+echo "------------------------------------------"
+read -p "Naciśnij Enter, aby zacząć..."
+./p1.sh
 
-p4: Przywracanie zasilania (odpowiednia sekwencja cyfr).
+p1.sh:
 
-p5 (Miniboss): Pierwszy Firewall. Trzy proste pytania; błąd cofa na start poziomu.
+
+
+
+#!/bin/bash
+clear
+echo "POZIOM 1: Cela kwarantanny"
+echo "Drzwi są zablokowane. Jak chcesz je otworzyć?"
+echo "1) Wytrych (brute-force portów)"
+echo "2) Zwarcie (przeciążenie styków)"
+echo "3) Logi (szukanie błędu w systemie)"
+
+read -p "Wybór: " opt
+case $opt in
+    1) echo "Zbyt głośno! Alarm się wzbudził. Spróbuj ponownie."; sleep 2; ./p1.sh ;;
+    2) echo "Błysk! Przekaźnik padł. Drzwi stoją otworem!"; ./p2.sh ;;
+    3) echo "Znalazłeś lukę w jądrze systemu. Przechodzisz niezauważony!"; ./p2.sh ;;
+    *) echo "Niepoprawna opcja."; sleep 1; ./p1.sh ;;
+esac
+
+p2.sh:
+
+
+
+
+#!/bin/bash
+clear
+echo "POZIOM 2: Strażnik Systemowy (Antywirus)"
+echo "Skaner wykrył Twoją obecność. Aby go wyłączyć, odgadnij PIN (100-999)."
+echo "Podpowiedź: Suma cyfr to 15, a ostatnia cyfra to 5."
+
+while true; do
+    read -p "Podaj PIN: " pin
+    if [ "$pin" == "735" ] || [ "$pin" == "645" ] || [ "$pin" == "825" ]; then
+        echo "Dostęp przyznany. Antywirus przechodzi w tryb uśpienia."
+        sleep 2; ./p3.sh; break
+    else
+        echo "Błędny PIN. Skanowanie w toku..."
+    fi
+done
+
+p3.sh:
+
+
+
+
+#!/bin/bash
+clear
+echo "POZIOM 3: Korytarz śmieciowych danych"
+echo "Musisz znaleźć plik 'KLUCZ.txt' wśród tysięcy śmieci."
+echo "Dostępne pliki: junk1, cache_old, temp_99, KLUCZ.txt, trash_0"
+
+read -p "Wpisz nazwę pliku, który chcesz otworzyć: " file
+if [ "$file" == "KLUCZ.txt" ]; then
+    echo "Znalazłeś! Kod dostępu do windy to: 1010"
+    sleep 2; ./p4.sh
+else
+    echo "To tylko śmieci... Szukaj dalej."
+    sleep 2; ./p3.sh
+fi
+
+p4.sh:
+
+
+
+
+#!/bin/bash
+clear
+echo "POZIOM 4: Konsola Zasilania"
+echo "Wprowadź sekwencję binarną (4 bity), aby włączyć windę."
+echo "(Podpowiedź z poprzedniego poziomu!)"
+
+read -p "Sekwencja: " seq
+if [ "$seq" == "1010" ]; then
+    echo "Energia płynie do sektora wyjściowego!"
+    sleep 2; ./p5.sh
+else
+    echo "Spięcie! System restartuje konsolę."
+    sleep 2; ./p4.sh
+fi
+
+p5.sh:
+
+
+
+
+#!/bin/bash
+clear
+echo -e "\e[1;31m!!! ALERT: FIREWALL WYKRYTY !!!\e[0m"
+echo "Odpowiedz poprawnie na 3 pytania, inaczej cofniesz się na start poziomu!"
+
+# Pytanie 1
+read -p "1. Jaka komenda służy do wyświetlenia plików? " q1
+if [ "$q1" != "ls" ]; then ./p5.sh; exit; fi
+
+# Pytanie 2
+read -p "2. Jaki protokół działa na porcie 80? " q2
+if [ "$q2" != "http" ] && [ "$q2" != "HTTP" ]; then ./p5.sh; exit; fi
+
+# Pytanie 3
+read -p "3. Czy Bash to język kompilowany? (tak/nie) " q3
+if [ "$q3" != "nie" ]; then ./p5.sh; exit; fi
+
+echo "FIREWALL PRZEŁAMANY! Akt 1 zakończony sukcesem."
+echo "Przekazywanie kontroli do Aktu 2 (Gracz: Kolejna osoba)..."
+# Tu docelowo będzie: ./p6.sh
