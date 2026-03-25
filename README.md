@@ -64,7 +64,7 @@ p19: Błądzenie w ciemności z użyciem "sonaru poleceń".
 
 p20: Spotkanie z "Duchem w maszynie" (starszą AI), rozwiązanie jego zagadki słownej.
 
-🛡️ Markian: Akt 5 - "Bezpieczeństwo (SecOps)" (p21.sh - p25.sh)
+🛡️ Hubert: Akt 5 - "Bezpieczeństwo (SecOps)" (p21.sh - p25.sh)
 Twój cel: Czysta akcja i włamywanie się do systemów fizycznych.
 
 p21: Skradanie się przez koszary cyber-ogarów (programów tropiących).
