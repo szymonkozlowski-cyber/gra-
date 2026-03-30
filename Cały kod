@@ -317,7 +317,7 @@ rm -f final_choice.txt
 echo ""
 echo -e "\e[32m======= KONIEC GRY =======\e[0m"
 echo "Gratulacje dla ekipy twórców!"
-echo "Autorzy: Daniel, Kamil, Igor, Vlad, Markian, Bartosz, Szymon."
+echo "Autorzy: Daniel, Kamil, Igor, Vlad, Hubert, Bartosz, Szymon."
 exit 0
 EOF
 
