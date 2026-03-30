@@ -12,7 +12,7 @@ Aby uruchomić grę w środowisku Linux/macOS (lub WSL na Windowsie), pobierz ws
    ```bash
    chmod +x *.sh
    📋 Przydział Aktów i Poziomów
-💻 Daniel: Akt 1 - "Przebudzenie i Kwarantanna" (start.sh, p1.sh - p5.sh)
+💻 julian: Akt 1 - "Przebudzenie i Kwarantanna" (start.sh, p1.sh - p5.sh)
 Twój cel: Wprowadzić gracza w klimat i dać mu pierwsze wyzwania.
 
 p1: Wybór metody ucieczki z celi (wytrych, zwarcie, logi).
@@ -101,18 +101,3 @@ p33: Ostateczna bitwa na kody (mechanika w stylu papier-kamień-nożyce).
 
 p34: Omni pokonany. Wybór zakończenia: kradzież, zniszczenie, czy przejęcie władzy nad firmą.
 
-p35 (Epilog): Opis zakończenia na podstawie wyboru z p34 i napis "Koniec gry". Skrypt kończy działanie poleceniem exit 0.
-🌐 Michał: Akt 8 - "Ucieczka do Sieci Globalnej (Post-Game DLC)" (p36.sh - p41.sh)
-Twój cel: Akcja dzieje się po finale. Gracz ucieka z serwerów OmniCorp w otwarty internet. Musisz pokazać chaos globalnej sieci, zatrzeć ślady i znaleźć dla gracza nowy, cyfrowy dom.
-
-p36: Brama Brzegowa (Edge Router): Wyjście na zewnątrz nie jest proste. Gracz musi złamać protokoły dostawcy internetu (ISP) w minigrze wzorowanej na Mastermindzie (odgadywanie sekwencji portów z podpowiedziami "ciepło/zimno").
-
-p37: Zacieranie Śladów (Spoofing): OmniCorp wysłało sygnał śledzący. Gracz musi wykonać serię szybkich skoków przez fałszywe serwery proxy w różnych krajach, by zrzucić "ogon" (wymaga szybkiego wpisywania komend pod presją czasu).
-
-p38: Zasadzka Łowców Nagród: Spotkanie z niezależnymi, bezlitosnymi programami tropiącymi (Trace-Route Agents). Walka oparta na unikaniu ataków DDoS i przeciążaniu ich systemów "śmieciowymi pakietami".
-
-p39: Zejście do Darknetu: Szukanie ukrytego serwera-sanktuarium. Gracz musi przeszukać zaciemnione terminale i odkodować zniekształcony adres IP (np. proste szyfrowanie przesunięciowe typu ROT13).
-
-p40 (Trudny wybór): Wąskie Gardło Bandwidthu: Połączenie z bezpiecznym serwerem ma drastyczny limit rozmiaru pliku. Gracz musi wybrać, które zebrane przez całą grę cenne dane, skille lub nawet fragmenty własnego kodu trwale usunąć, aby się zmieścić. Bolesna decyzja.
-
-p41 (Prawdziwy Finał): "Nowy Początek": Ciche zalogowanie w nowym, anonimowym systemie. Gracz pisze własną, krótką wiadomość, która zostaje wyprintowana w terminalu, po czym następuje ostateczne zniknięcie w cieniu sieci i prawdziwe exit 0.
